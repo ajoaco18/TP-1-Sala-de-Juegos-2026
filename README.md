@@ -7,7 +7,7 @@ Sprint #3 |	Fin de Semana 3 |	🔲 Pendiente |
 Sprint #4 |	Fin de Semana 4 |	🔲 Pendiente |
 
 | # | Funcionalidad | Descripción | Sprint | Estado |
-|---|---|
+|---|---|---|---|
 1 |Estructura Base |Setup Angular + Deploy (Vercel/Firebase) + Favicon |1 | 🔲 Pendiente|
 2,Quién Soy,Datos desde API GitHub + Explicación Juego Propio,1,🔲 Pendiente
 3,Auth System,Login/Registro con Firebase o Supabase (sin alerts),2,🔲 Pendiente
