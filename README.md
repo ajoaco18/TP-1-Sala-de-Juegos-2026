@@ -20,7 +20,7 @@ Sprint |	Entrega |	Estado |
 | 10 | Resultados | Tablas de rankings y desempeño por juego | 4 |🔲 Pendiente |
 
 ##Módulos Transversales
-|---|
+|---|---|
 | Módulo | Tecnología / Implementación |
 | Frontend | Angular + TypeScript |
 | Backend | Firebase / Supabase (Auth & Realtime DB) |
