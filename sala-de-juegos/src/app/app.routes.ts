@@ -10,5 +10,5 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'registro', component: Registro },
   { path: 'quien-soy', component: QuienSoy },
-  { path: '**', redirectTo: 'home' } // por si mandan cualquier fruta
+  { path: '**', redirectTo: 'home' } 
 ];
