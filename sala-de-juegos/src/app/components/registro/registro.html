@@ -1,1 +1,15 @@
-<p>registro works!</p>
+<div class="registro-box">
+  <h2>Crear Cuenta</h2>
+
+  <form (ngSubmit)="onRegistro()">
+    <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Nombre" required>
+    <input type="text" [(ngModel)]="apellido" name="apellido" placeholder="Apellido" required>
+    <input type="number" [(ngModel)]="edad" name="edad" placeholder="Edad" required>
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required>
+    <input type="password" [(ngModel)]="pass" name="pass" placeholder="Contraseña" required>
+
+    <button type="submit">Registrarme e Ingresar</button>
+  </form>
+
+  <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+</div>

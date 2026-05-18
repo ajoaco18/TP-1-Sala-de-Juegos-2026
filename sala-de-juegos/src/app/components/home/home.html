@@ -1,1 +1,20 @@
-<p>Holaa!</p>
+<div class="home-container">
+  <h1>Bienvenidos a la Sala de Juegos</h1>
+
+  <div *ngIf="!usuarioLogueado" class="auth-actions">
+    <p>Iniciá sesión para registrar tus mejores puntajes.</p>
+    <button routerLink="/login">Iniciar Sesión</button>
+    <button routerLink="/registro">Registrarse</button>
+  </div>
+
+  <div *ngIf="usuarioLogueado" class="user-panel">
+    <p>Hola de nuevo, <strong>{{ usuarioLogueado.email }}</strong> 👋</p>
+    <button (click)="onLogout()" class="btn-logout">Cerrar Sesión</button>
+  </div>
+
+  <hr>
+
+  <div class="games-grid">
+    <button routerLink="/juegos/clicks">Clicks por Segundo</button>
+  </div>
+</div>
