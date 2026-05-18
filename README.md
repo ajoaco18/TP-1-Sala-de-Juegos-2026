@@ -9,8 +9,8 @@
 ## 👤 Datos del Alumno
 *   **Nombre y Apellido:** Joaquín Agüero
 *   **Rol:** Integrante Único (Desarrollador Fullstack)
-*   **Repositorio:** [github.com/joaquin-aguero](https://github.com/joaquin-aguero) *(Asegurate de poner tu link real)*
-*   **Deploy Activo (Vercel):** [Link a tu Deploy de Vercel](https://tu-deploy.vercel.app) *(Completar con tu link)*
+*   **Repositorio:** [https://github.com/ajoaco18](https://github.com/ajoaco18/TP-1-Sala-de-Juegos-2026)
+*   **Deploy Activo (Vercel):** https://tp-1-sala-de-juegos-2026.vercel.app/
 
 ---
 
@@ -18,7 +18,7 @@
 
 | Sprint | Fecha de Rendición | Contenido Evaluado | Rama (Branch) | Estado |
 | :---: | :---: | :--- | :---: | :---: |
-| **Sprint #1** | Mar 19/05/2026 | Estructura Base + API GitHub | `rama-sprint-1` | 🔲 Pendiente |
+| **Sprint #1** | Mar 19/05/2026 | Estructura Base + API GitHub | `rama-sprint-1` | ✅ Realizado |
 | **Sprint #2** | Mié 20/05/2026 | Auth + Guards + Home Condicional | `rama-sprint-2` | 🔲 Pendiente |
 | **Sprint #3** | Mar 26/05/2026 | Ahorcado + Mayor/Menor + Chat Realtime | `rama-sprint-3` | 🔲 Pendiente |
 | **Sprint #4** | Mar 26/05/2026 | Preguntados + Juego Propio + Tablas | `rama-sprint-4` | 🔲 Pendiente |
