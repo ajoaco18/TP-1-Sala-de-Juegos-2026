@@ -31,10 +31,10 @@
 ### 📦 Sprint #1 — Infraestructura y Base (`rama-sprint-1` → PR)
 | # | Funcionalidad | Descripción | Estado |
 | :---: | :--- | :--- | :---: |
-| 1.1 | **Deploy Inicial** | Configuración de hosting en Vercel activo y funcional. | 🔲 Pendiente |
-| 1.2 | **Navegación Base** | Ruteo sin límites entre Login, Registro, Home y Quién Soy. | 🔲 Pendiente |
-| 1.3 | **Componente Quién Soy** | Datos dinámicos desde la API de GitHub + Explicación del Juego Propio. | 🔲 Pendiente |
-| 1.4 | **Favicon** | Identificador gráfico personalizado de la aplicación. | 🔲 Pendiente |
+| 1.1 | **Deploy Inicial** | Configuración de hosting en Vercel activo y funcional. | ✅ Realizado |
+| 1.2 | **Navegación Base** | Ruteo sin límites entre Login, Registro, Home y Quién Soy. | ✅ Realizado |
+| 1.3 | **Componente Quién Soy** | Datos dinámicos desde la API de GitHub + Explicación del Juego Propio. | ✅ Realizado |
+| 1.4 | **Favicon** | Identificador gráfico personalizado de la aplicación. | ✅ Realizado |
 
 ### 🔐 Sprint #2 — Autenticación y Control (`rama-sprint-2` → PR)
 | # | Funcionalidad | Descripción | Estado |
