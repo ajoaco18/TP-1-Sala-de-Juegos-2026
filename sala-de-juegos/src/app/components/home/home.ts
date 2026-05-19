@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router'; 
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true, 
+  imports: [CommonModule, RouterModule], 
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css']
 })
-export class Home {}
+export class HomeComponent {
+  private authService = inject(AuthService);
+
+  public usuarioLogueado = this.authService.usuarioActual;
+
+  onLogout(): void {
+    this.authService.logout();
+  }
+}

@@ -1,1 +1,49 @@
-<p>Holaa!</p>
+<div class="home-container">
+  <header class="home-header">
+    <h1>🕹️ Sala de Juegos</h1>
+    <p class="subtitle">Programacion IV</p>
+  </header>
+
+  @if (usuarioLogueado(); as user) {
+    <div class="profile-card">
+      <div class="profile-info">
+        <span class="avatar-fallback">{{ user.email.charAt(0).toUpperCase() }}</span>
+        <div>
+          <h3>Bienvenido de vuelta</h3>
+          <p class="user-email">{{ user.email }}</p>
+        </div>
+      </div>
+      <button class="btn-logout" (click)="onLogout()">Cerrar Sesion</button>
+    </div>
+
+    <main class="games-grid" style="display: flex; gap: 20px; max-width: 900px; margin: 0 auto;">
+      
+      <div class="game-card" routerLink="/juegos" style="flex: 1; cursor: pointer;">
+        <div class="game-icon" style="font-size: 2.5rem; margin-bottom: 10px;">⚡</div>
+        <h3>Minijuegos de Reflejos</h3>
+        <p>Entrena tus capacidades cognitivas. Incluye CPS Tester (velocidad de click) y Aim Trainer (precisión visual).</p>
+        <span class="game-link">Ingresar al Laboratorio →</span>
+      </div>
+
+      <div class="game-card" routerLink="/quien-soy" style="flex: 1; cursor: pointer;">
+        <div class="game-icon" style="font-size: 2.5rem; margin-bottom: 10px;">👤</div>
+        <h3>Sobre el Alumno</h3>
+        <p>Datos personales, informacion de contacto y redes del desarrollador de la plataforma.</p>
+        <span class="game-link">Ver Perfil →</span>
+      </div>
+
+    </main>
+
+  } @else {
+    <div class="guest-card">
+      <div class="guest-icon" style="font-size: 3.5rem; margin-bottom: 15px;">🕹️</div>
+      <h2>Acceso Restringido</h2>
+      <p>Debes iniciar sesion o registrarte en la plataforma para poder medir tus capacidades y guardar tus estadisticas de juego.</p>
+      
+      <div class="guest-actions">
+        <button class="btn-primary" routerLink="/login">Iniciar Sesion</button>
+        <button class="btn-secondary" routerLink="/registro">Crear Cuenta</button>
+      </div>
+    </div>
+  }
+</div>

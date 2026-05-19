@@ -1,10 +1,25 @@
-<nav style="padding: 15px; background-color: #24292f; display: flex; gap: 20px;">
-  <a routerLink="/home" style="color: white; text-decoration: none; font-weight: bold;">Home</a>
-  <a routerLink="/quien-soy" style="color: white; text-decoration: none; font-weight: bold;">Quién Soy</a>
-  <a routerLink="/login" style="color: white; text-decoration: none; font-weight: bold;">Login</a>
-  <a routerLink="/registro" style="color: white; text-decoration: none; font-weight: bold;">Registro</a>
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/home" class="nav-logo">
+      <span style="margin-right: 6px;">🕹️</span>SalaJuegos
+    </a>
+    
+    <div class="nav-links">
+      <a routerLink="/home" routerLinkActive="active" class="nav-item">
+        <span style="margin-right: 4px;"></span>Home
+      </a>
+      <a routerLink="/quien-soy" routerLinkActive="active" class="nav-item">
+        <span style="margin-right: 4px;">🙋🏿</span>Quien Soy
+      </a>
+      
+      @if (!usuarioLogueado()) {
+        <a routerLink="/login" routerLinkActive="active" class="nav-item">Login</a>
+        <a routerLink="/registro" routerLinkActive="active" class="nav-item link-highlight">Registro</a>
+      }
+    </div>
+  </div>
 </nav>
 
-<main style="padding: 20px;">
+<main class="main-content">
   <router-outlet></router-outlet>
 </main>

@@ -1,13 +1,13 @@
 <div style="max-width: 600px; margin: 30px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-family: sans-serif; background-color: #ffffff;">
   
-  @if (datosGithub) {
-    <img [src]="datosGithub.avatar_url" alt="Foto de Joaquin" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #24292f;">
-    <h2 style="margin-top: 15px; color: #24292f;">{{ datosGithub.name || 'Joaquin Agüero' }}</h2>
+  @if (datosGithub(); as user) {
+    <img [src]="user.avatar_url" alt="Foto de Joaquin" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #24292f;">
+    <h2 style="margin-top: 15px; color: #24292f;">{{ user.name }}</h2>
   } @else {
     <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #f3f4f6; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 3px dashed #ccc; color: #666;">
       Cargando...
     </div>
-    <h2 style="margin-top: 15px; color: #24292f;">Joaquin Agüero</h2>
+    <h2 style="margin-top: 15px; color: #24292f;">Joaquin Aguero</h2>
   }
 
   <p style="color: #666; font-weight: bold;">Tecnico Electronico y Estudiante de Programacion</p>
@@ -16,22 +16,27 @@
     Hola, Soy Joaquin, tengo 23 años y vivo en Buenos Aires. Soy tecnico electronico y actualmente estoy terminando la tecnicatura en programacion. Este es mi proyecto de la Sala de Juegos para la materia Laboratorio IV.
   </p>
 
-  <div style="margin-top: 20px; padding: 15px; background-color: #ece7ff; border-radius: 6px; text-align: left; border: 1px solid #f0bbf7;">
-    <h4 style="margin-top: 0; color: #651661;">Juego Propio: "Clicks por Segundo (CPS Tester)"</h4>
-    <p style="margin: 8px 0; color: #1f2937; text-align: justify;">
-      <strong>Eleccion del juego:</strong> Elegi desarrollar un contador de clicks por second para medir de forma directa la capacidad motriz, la velocidad de reacciin y la agilidad cognitiva del jugador bajo presion de tiempo.
+  <div style="margin-top: 20px; padding: 15px; background-color: #f3e8ff; border-radius: 6px; text-align: left; border: 1px solid #e9d5ff;">
+    <h4 style="margin-top: 0; color: #6b21a8; display: flex; align-items: center; gap: 6px;">🕹️ Mi Juego: Minijuego de Reflejos</h4>
+    <p style="margin: 8px 0; color: #1f2937; text-align: justify; font-size: 0.9rem; line-height: 1.5;">
+      Elegi desarrollar una plataforma unificada para entrenar y medir la capacidad motriz, la velocidad de reaccion y la agilidad cognitiva bajo presion de tiempo a traves de dos minijuegos:
     </p>
-    <p style="margin: 8px 0; color: #1f2937; text-align: justify;">
-      <strong>¿Cómo se juega?</strong> El usuario tiene un boton principal y un temporizador de 10 segundos. Al dar el primer click, el tiempo empieza a correr y debe cliquear la mayor cantidad de veces posible. Al finalizar, se calcula su promedio de CPS (Clicks Per Second) y se guarda su record en las estadisticas.
+    
+    <p style="margin: 12px 0 6px 0; color: #1f2937; text-align: justify; font-size: 0.9rem; line-height: 1.5;">
+      <strong>1. CPS Tester:</strong> Es un contador de clicks por segundo. El usuario tiene 10 segundos para cliquear un boton la mayor cantidad de veces posible. Al final se calcula su promedio de clicks y se guarda el record.
+    </p>
+    
+    <p style="margin: 6px 0; color: #1f2937; text-align: justify; font-size: 0.9rem; line-height: 1.5;">
+      <strong>2. Aim Trainer:</strong> Es un entrenador de punteria y precision visual. El jugador debe destruir diferentes blancos moviles o estaticos en la pantalla en el menor tiempo posible para medir su velocidad de reaccion con el mouse. Ambos juegos guardan las estadisticas automaticamente en Supabase.
     </p>
   </div>
 
   <div style="margin-top: 20px; padding: 15px; background-color: #f6f8fa; border-radius: 6px; text-align: left; border: 1px solid #d0d7de;">
     <h4 style="margin-top: 0; color: #24292f;">Datos desde API GitHub:</h4>
-    @if (datosGithub) {
-      <p style="margin: 5px 0;"><strong>Usuario:</strong> {{ datosGithub.login }}</p>
-      <p style="margin: 5px 0;"><strong>Repositorios públicos:</strong> {{ datosGithub.public_repos }}</p>
-      <p style="margin: 5px 0;"><strong>Seguidores:</strong> {{ datosGithub.followers }}</p>
+    @if (datosGithub(); as apiUser) {
+      <p style="margin: 5px 0;"><strong>Usuario:</strong> {{ apiUser.login }}</p>
+      <p style="margin: 5px 0;"><strong>Repositorios publicos:</strong> {{ apiUser.public_repos }}</p>
+      <p style="margin: 5px 0;"><strong>Seguidores:</strong> {{ apiUser.followers }}</p>
     } @else {
       <p style="margin: 5px 0; color: #666;">Cargando datos de GitHub...</p>
     }

@@ -1,1 +1,57 @@
-<p>login works!</p>
+<div class="login-page"> 
+  <div class="login-card"> 
+    <div class="login-header">
+      <h2>Iniciar Sesión</h2>
+      <p>Ingresa para continuar midiendo tus capacidades</p>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-msg" style="color: #dc2626; background: #fee2e2; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; text-align: center;">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <div class="form-group">
+      <label>Correo Electrónico</label>
+      <input type="email" #emailInput placeholder="ejemplo@correo.com">
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" #passInput placeholder="••••••••">
+    </div>
+
+    <div class="quick-login-container" style="margin-bottom: 20px;">
+      <label style="font-size: 0.8rem; color: #6b7280; font-weight: 600; display: block; margin-bottom: 8px;">🚀 Accesos Rápidos (Corrección):</label>
+      <div class="quick-buttons" style="display: flex; gap: 8px;">
+        
+        <button type="button" class="btn-quick" [disabled]="cargando"
+          style="flex: 1; padding: 8px; font-size: 0.75rem; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-weight: 500;"
+          (click)="loginRapido('tester@correo.com', '123456', emailInput, passInput)">
+          👤 Tester
+        </button>
+
+        <button type="button" class="btn-quick" [disabled]="cargando"
+          style="flex: 1; padding: 8px; font-size: 0.75rem; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-weight: 500;"
+          (click)="loginRapido('admin@correo.com', '123456', emailInput, passInput)">
+          🔑 Admin
+        </button>
+
+        <button type="button" class="btn-quick" [disabled]="cargando"
+          style="flex: 1; padding: 8px; font-size: 0.75rem; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; font-weight: 500;"
+          (click)="loginRapido('invitado@correo.com', '123456', emailInput, passInput)">
+          🤝 Invitado
+        </button>
+
+      </div>
+    </div>
+
+    <button class="btn-submit" [disabled]="cargando" [style.opacity]="cargando ? '0.7' : '1'" [style.cursor]="cargando ? 'not-allowed' : 'pointer'" (click)="onLogin(emailInput.value, passInput.value)">
+      {{ cargando ? 'Iniciando sesión...' : 'Ingresar' }}
+    </button>
+
+    <p class="switch-route">
+      ¿No tienes cuenta? <a routerLink="/registro">Regístrate acá</a>
+    </p>
+  </div>
+</div>
