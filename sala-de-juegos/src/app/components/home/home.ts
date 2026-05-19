@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router'; 
 import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,23 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  public usuarioLogueado: any = null;
-  private authSub!: Subscription;
+export class HomeComponent {
+  private authService = inject(AuthService);
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.authSub = this.authService.currentUser$.subscribe(user => {
-      this.usuarioLogueado = user;
-    });
-  }
+  public usuarioLogueado = this.authService.usuarioActual;
 
   onLogout(): void {
     this.authService.logout();
-  }
-
-  ngOnDestroy(): void {
-    if (this.authSub) this.authSub.unsubscribe();
   }
 }

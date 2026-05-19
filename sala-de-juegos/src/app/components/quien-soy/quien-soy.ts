@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { GithubService } from '../../services/github.service';
 
 @Component({
   selector: 'app-quien-soy',
@@ -8,14 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './quien-soy.css'
 })
 export class QuienSoy implements OnInit {
-  datosGithub: any = null;
+  private githubService = inject(GithubService);
+  public datosGithub = this.githubService.userSignal;
 
   ngOnInit() {
-    fetch('https://api.github.com/users/ajoaco18')
-      .then(response => response.json())
-      .then(data => {
-        this.datosGithub = data;
-      })
-      .catch(error => console.error('Error al traer datos de GitHub:', error));
+    this.githubService.obtenerDatosGithub('ajoaco18');
   }
 }

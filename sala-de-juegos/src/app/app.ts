@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from './services/auth.service'; 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
-  templateUrl: './app.html',  
-  styleUrl: './app.css'       
+  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive],
+  templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
 export class App {
-  title = 'sala-de-juegos';
+  private authService = inject(AuthService);
+  
+  public usuarioLogueado = this.authService.usuarioActual;
 }

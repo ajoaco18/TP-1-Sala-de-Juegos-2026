@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-
 
 declare var supabase: any;
 
@@ -10,47 +8,57 @@ declare var supabase: any;
   providedIn: 'root'
 })
 export class AuthService {
+  private router = inject(Router);
   private supabase: any; 
-  private currentUserSubject: BehaviorSubject<any | null>;
-  public currentUser$: Observable<any | null>;
 
-  constructor(private router: Router) {
-    // Usamos el constructor global del script del index
-    this.supabase = supabase.createClient(environment.supabaseUrl, environment.supabaseKey);
-    this.currentUserSubject = new BehaviorSubject<any | null>(null);
-    this.currentUser$ = this.currentUserSubject.asObservable();
+  public usuarioActual = signal<any | null>(null);
+
+  constructor() {
+    this.supabase = supabase.createClient(environment.supabaseUrl, environment.supabaseKey, {
+      auth: {
+        storage: window.sessionStorage, 
+        autoRefreshToken: true,
+        persistSession: true
+      }
+    });
 
     this.supabase.auth.onAuthStateChange((event: string, session: any) => {
       if (session?.user) {
-        this.currentUserSubject.next(session.user);
+        this.usuarioActual.set(session.user);
       } else {
-        this.currentUserSubject.next(null);
+        this.usuarioActual.set(null);
       }
     });
   }
 
-  public get currentUserValue(): any | null {
-    return this.currentUserSubject.value;
-  }
 
   async login(email: string, pass: string): Promise<any> {
     const { data, error } = await this.supabase.auth.signInWithPassword({
       email: email,
       password: pass
     });
+    
     if (error) throw error;
+
+    this.router.navigate(['/']);
     return data;
   }
 
   async registro(email: string, pass: string, nombre: string, apellido: string, edad: number): Promise<any> {
-    const { data, error } = await this.supabase.auth.signUp({
-      email: email,
-      password: pass
-    });
+    try {
+      const { data, error } = await this.supabase.auth.signUp({
+        email: email,
+        password: pass
+      });
 
-    if (error) throw error;
+      if (error) {
+        throw error;
+      }
 
-    if (data.user) {
+      if (!data?.user) {
+        throw new Error('User already exists');
+      }
+
       const { error: dbError } = await this.supabase
         .from('usuarios')
         .insert([
@@ -63,11 +71,19 @@ export class AuthService {
           }
         ]);
       
-      if (dbError) throw dbError;
+      if (dbError) {
+        throw dbError;
+      }
+
+      return data;
+
+    } catch (error: any) {
+      console.error('Error atrapado en el Servicio:', error);
+      throw error;
     }
-    return data;
   }
 
+  // LOGOUT
   async logout(): Promise<void> {
     await this.supabase.auth.signOut();
     this.router.navigate(['/login']);

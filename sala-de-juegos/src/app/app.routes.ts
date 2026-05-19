@@ -5,9 +5,11 @@ import { RegistroComponent } from './components/registro/registro';
 import { QuienSoy } from './components/quien-soy/quien-soy'; 
 
 export const routes: Routes = [
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'quien-soy', component: QuienSoy } 
+  { path: 'quien-soy', component: QuienSoy },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

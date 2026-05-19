@@ -1,15 +1,53 @@
-<div class="registro-box">
-  <h2>Crear Cuenta</h2>
+<div class="login-page"> 
+  <div class="login-card"> 
+    <div class="login-header">
+      <h2>Crear Cuenta</h2>
+      <p>Registrate para empezar a medir tus capacidades</p>
+    </div>
 
-  <form (ngSubmit)="onRegistro()">
-    <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Nombre" required>
-    <input type="text" [(ngModel)]="apellido" name="apellido" placeholder="Apellido" required>
-    <input type="number" [(ngModel)]="edad" name="edad" placeholder="Edad" required>
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required>
-    <input type="password" [(ngModel)]="pass" name="pass" placeholder="Contraseña" required>
+    @if (errorMessage) {
+      <div class="error-msg" style="color: #dc2626; background: #fee2e2; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; text-align: center;">
+        {{ errorMessage }}
+      </div>
+    }
 
-    <button type="submit">Registrarme e Ingresar</button>
-  </form>
+    @if (successMessage) {
+      <div class="success-msg" style="color: #155724; background: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; text-align: center;">
+        {{ successMessage }}
+      </div>
+    }
 
-  <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" #nombreInput placeholder="Tu nombre">
+    </div>
+
+    <div class="form-group">
+      <label>Apellido</label>
+      <input type="text" #apellidoInput placeholder="Tu apellido">
+    </div>
+
+    <div class="form-group">
+      <label>Edad</label>
+      <input type="number" #edadInput placeholder="Ej: 23">
+    </div>
+
+    <div class="form-group">
+      <label>Correo Electronico</label>
+      <input type="email" #emailInput placeholder="ejemplo@correo.com">
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" #passInput placeholder="••••••••">
+    </div>
+
+    <button class="btn-submit" [disabled]="cargando" [style.opacity]="cargando ? '0.7' : '1'" [style.cursor]="cargando ? 'not-allowed' : 'pointer'" (click)="onRegistro(emailInput.value, passInput.value, nombreInput.value, apellidoInput.value, edadInput.value)">
+      {{ cargando ? 'Procesando...' : 'Registrarse e Ingresar' }}
+    </button>
+
+    <p class="switch-route">
+      ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesion aca</a>
+    </p>
+  </div>
 </div>

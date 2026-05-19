@@ -1,37 +1,78 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms';   
-import { Router } from '@angular/router';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, FormsModule], 
+  imports: [CommonModule, RouterLink],
   templateUrl: './registro.html',
   styleUrls: ['./registro.css']
 })
 export class RegistroComponent {
-  public email: string = '';
-  public pass: string = '';
-  public nombre: string = '';
-  public apellido: string = '';
-  public edad!: number;
   public errorMessage: string = '';
+  public successMessage: string = ''; 
+  public cargando: boolean = false;   
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private cdr: ChangeDetectorRef 
+  ) {}
 
-  async onRegistro(): Promise<void> {
+  async onRegistro(email: string, pass: string, nombre: string, apellido: string, edadStr: string): Promise<void> {
     this.errorMessage = '';
+    this.successMessage = '';
+    const edad = parseInt(edadStr, 10);
+
+    if (!email.trim() || !pass.trim() || !nombre.trim() || !apellido.trim() || !edadStr.trim()) {
+      this.errorMessage = 'Por favor, completa todos los campos del formulario.';
+      return;
+    }
+
+    if (isNaN(edad) || edad <= 0 || edad > 120) {
+      this.errorMessage = 'Por favor, ingresa una edad valida.';
+      return;
+    }
+
+    if (pass.length < 6 || pass.length > 20) {
+      this.errorMessage = 'La contrasenia debe tener entre 6 y 20 caracteres.';
+      return;
+    }
+
+
+    const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{2,30}(?:\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]{2,30})*$/;
+    const regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{2,30}$/;
+
+    if (!regexNombre.test(nombre.trim())) {
+      this.errorMessage = 'El nombre solo debe contener letras (entre 2 y 30 caracteres) y no empezar/terminar con espacios.';
+      return;
+    }
+
+    if (!regexApellido.test(apellido.trim()) || apellido.includes(' ')) {
+      this.errorMessage = 'El apellido solo debe contener letras, sin espacios ni caracteres especiales (entre 2 y 30 caracteres).';
+      return;
+    }
+
     try {
-      await this.authService.registro(this.email, this.pass, this.nombre, this.apellido, this.edad);
-      this.router.navigate(['/home']);
+      this.cargando = true; 
+      this.cdr.detectChanges(); 
+
+      await this.authService.registro(email, pass, nombre, apellido, edad);
+      
+      this.successMessage = '¡Cuenta creada con exito! Iniciando sesion...';
+      this.cdr.detectChanges();
+
+      setTimeout(() => {
+        this.router.navigate(['/']); 
+      }, 2000);
+
     } catch (error: any) {
-      if (error.message?.includes('already registered')) {
-        this.errorMessage = 'El usuario ya se encuentra registrado.';
-      } else {
-        this.errorMessage = error.message || 'Ocurrió un error durante el registro.';
-      }
+      this.cargando = false; 
+      console.log('Error detectado interno:', error);
+      this.errorMessage = 'El correo electronico ya se encuentra registrado. Intenta con otro.';
+      this.cdr.detectChanges(); 
     }
   }
 }
