@@ -1,0 +1,183 @@
+.juego-container {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.juego-container h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.marcador {
+  display: flex;
+  justify-content: space-around;
+  background: #f8fafc;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #f1f5f9;
+}
+
+.marcador p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.carta-box {
+  background: #ffffff;
+  color: #111827;
+  width: 170px;
+  height: 240px;
+  margin: 0 auto 25px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  border: 2px solid #e2e8f0;
+  transition: transform 0.2s ease;
+}
+
+.carta-box:hover {
+  transform: translateY(-2px);
+}
+
+.carta-numero {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.carta-palo {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.feedback {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #4f46e5;
+  height: 24px;
+  margin: 0 0 20px 0;
+}
+
+.feedback-vacio {
+  height: 24px;
+  margin: 0 0 20px 0;
+}
+
+.acciones {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-juego {
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-menor {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.btn-menor:hover:not(:disabled) {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.btn-mayor {
+  background: #4f46e5;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-mayor:hover:not(:disabled) {
+  background: #4338ca;
+  transform: translateY(-1px);
+}
+
+.btn-juego:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-juego:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.game-over-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 25px;
+  border-radius: 14px;
+  margin-top: 5px;
+  animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.game-over-box h3 {
+  color: #ef4444;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.game-over-box p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin: 0 0 15px 0;
+}
+
+.btn-reiniciar {
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-reiniciar:hover {
+  background: #1f2937;
+}
+
+.btn-back {
+  transition: opacity 0.2s;
+}
+
+.btn-back:hover {
+  opacity: 0.8;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

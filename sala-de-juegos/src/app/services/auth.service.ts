@@ -13,6 +13,10 @@ export class AuthService {
 
   public usuarioActual = signal<any | null>(null);
 
+  public getClient() {
+    return this.supabase;
+  }
+
   constructor() {
     this.supabase = supabase.createClient(environment.supabaseUrl, environment.supabaseKey, {
       auth: {
@@ -30,7 +34,6 @@ export class AuthService {
       }
     });
   }
-
 
   async login(email: string, pass: string): Promise<any> {
     const { data, error } = await this.supabase.auth.signInWithPassword({

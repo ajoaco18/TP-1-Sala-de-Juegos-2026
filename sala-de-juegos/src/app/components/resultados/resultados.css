@@ -1,0 +1,86 @@
+.resultados-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.rankings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.tabla-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tabla-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(79, 70, 229, 0.04);
+  border-color: #cbd5e1;
+}
+
+.tabla-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111827;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.tabla-ranking {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.tabla-ranking th {
+  background: #f9fafb;
+  color: #4b5563;
+  font-weight: 600;
+  padding: 12px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-ranking td {
+  padding: 12px;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tabla-ranking tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.tabla-ranking tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .rankings-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tabla-card {
+    padding: 15px;
+  }
+  
+  .tabla-ranking td, .tabla-ranking th {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}

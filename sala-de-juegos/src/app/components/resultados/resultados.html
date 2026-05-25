@@ -1,0 +1,111 @@
+<div class="resultados-container" style="max-width: 1000px; margin: 30px auto; padding: 20px; font-family: sans-serif;">
+  <h2 style="text-align: center; font-size: 2.2rem; font-weight: 800; color: #111827; margin-bottom: 5px;">📊 Estadisticas Globales</h2>
+
+  <div class="rankings-grid">
+    
+    <div class="tabla-card">
+      <h3>🔤 Ranking Ahorcado</h3>
+      <table class="tabla-ranking">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th style="text-align: center;">Palabras Superadas</th>
+            <th style="text-align: right;">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of rankingAhorcado; track res.id) {
+            <tr>
+              <td style="font-weight: 500;">{{ res.email.split('@')[0] }}</td>
+              <td style="text-align: center; font-weight: bold; color: #4f46e5;">{{ res.intentos_fallidos }} Pts</td>
+              <td style="text-align: right; color: #6b7280;">{{ res.fecha | date:'dd/MM' }}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="3" style="padding: 20px; text-align: center; color: #9ca3af;">No hay partidas registradas</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tabla-card">
+      <h3>🃏 Ranking Mayor o Menor</h3>
+      <table class="tabla-ranking">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th style="text-align: center;">Cartas Acertadas</th>
+            <th style="text-align: right;">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of rankingMayorMenor; track res.id) {
+            <tr>
+              <td style="font-weight: 500;">{{ res.email.split('@')[0] }}</td>
+              <td style="text-align: center; font-weight: bold; color: #4f46e5;">{{ res.cartas_acertadas }} Pts</td>
+              <td style="text-align: right; color: #6b7280;">{{ res.fecha | date:'dd/MM' }}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="3" style="padding: 20px; text-align: center; color: #9ca3af;">No hay partidas registradas</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tabla-card">
+      <h3>🌍 Ranking Trivia Preguntados</h3>
+      <table class="tabla-ranking">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th style="text-align: center;">Aciertos</th>
+            <th style="text-align: right;">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of rankingPreguntados; track res.id) {
+            <tr>
+              <td style="font-weight: 500;">{{ res.email.split('@')[0] }}</td>
+              <td style="text-align: center; font-weight: bold; color: #10b981;">{{ res.preguntas_correctas }} / {{ res.preguntas_totales }}</td>
+              <td style="text-align: right; color: #6b7280;">{{ res.fecha | date:'dd/MM' }}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="3" style="padding: 20px; text-align: center; color: #9ca3af;">No hay partidas registradas</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tabla-card">
+      <h3>⚡ Ranking Reflejos (CPS / AIM)</h3>
+      <table class="tabla-ranking">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th style="text-align: center;">Modo</th>
+            <th style="text-align: center;">Score</th>
+            <th style="text-align: right;">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of rankingReflejos; track res.id) {
+            <tr>
+              <td style="font-weight: 500;">{{ res.email.split('@')[0] }}</td>
+              <td style="text-align: center;">
+                <span [style.background]="res.modalidad === 'CPS' ? '#e0e7ff' : '#fee2e2'" 
+                      [style.color]="res.modalidad === 'CPS' ? '#4f46e5' : '#ef4444'" 
+                      style="font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">
+                  {{ res.modalidad }}
+                </span>
+              </td>
+              <td style="text-align: center; font-weight: bold; color: #111827;">{{ res.puntaje }} {{ res.modalidad === 'CPS' ? 'Cps' : 'seg' }}</td>
+              <td style="text-align: right; color: #6b7280;">{{ res.fecha | date:'dd/MM' }}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="4" style="padding: 20px; text-align: center; color: #9ca3af;">No hay partidas registradas</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

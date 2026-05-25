@@ -1,0 +1,89 @@
+<div class="reflejos-wrapper" style="max-width: 700px; margin: 30px auto; padding: 25px; background: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); font-family: sans-serif; color: #111827; text-align: center; position: relative;">
+  <button (click)="volverAlHome()" class="btn-back" style="position: absolute; left: 20px; top: 20px; background: none; border: none; color: #4f46e5; font-weight: bold; cursor: pointer; font-size: 1rem;">← Volver </button>
+  
+  @if (modoSeleccionado === 'MENU') {
+    <h2 style="margin-top: 15px; margin-bottom: 5px; font-weight: 800;">⚡ Laboratorio de Reflejos</h2>
+    <p style="color: #6b7280; margin-bottom: 30px;">Poné a prueba tu velocidad motriz y tu puntería.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="border: 1px solid #e5e7eb; padding: 20px; border-radius: 12px; background: #f9fafb;">
+        <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🖱️</span>
+        <h3 style="margin: 0 0 10px 0;">CPS Tester</h3>
+        <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 20px;">¿Qué tan rápido sos con el mouse? Hacé la mayor cantidad de clics en 5 segundos.</p>
+        <button (click)="cambiarModo('CPS')" class="btn-primary" style="width: 100%;">Ingresar</button>
+      </div>
+
+      <div style="border: 1px solid #e5e7eb; padding: 20px; border-radius: 12px; background: #f9fafb;">
+        <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🎯</span>
+        <h3 style="margin: 0 0 10px 0;">Aim Trainer</h3>
+        <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 20px;">Mejorá tu precisión. Pegale a los 20 objetivos aleatorios en el menor tiempo posible.</p>
+        <button (click)="cambiarModo('AIM')" class="btn-primary" style="width: 100%;">Ingresar</button>
+      </div>
+    </div>
+  }
+
+  @if (modoSeleccionado === 'CPS') {
+    <div style="position: relative; margin-top: 15px;">
+      <h2 style="margin-bottom: 25px;">🖱️ Medidor de CPS</h2>
+
+      @if (!juegoIniciado && !juegoTerminado) {
+        <button (click)="iniciarCps()" class="btn-primary" style="padding: 15px 40px; font-size: 1.2rem; margin: 40px 0;">¡Empezar Prueba! ⏱️</button>
+      }
+
+      @if (juegoIniciado && !juegoTerminado) {
+        <div style="display: flex; justify-content: space-around; margin-bottom: 20px; font-size: 1.2rem; font-weight: bold;">
+          <span style="color: #ef4444;">Tiempo: {{ tiempoCps }}s</span>
+          <span style="color: #4f46e5;">Clics: {{ contadorCps }}</span>
+        </div>
+        <div (mousedown)="registrarClicCps()" style="height: 250px; background: #f3f4f6; border: 3px dashed #6b7280; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.1s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
+          <h3 style="font-size: 1.5rem; color: #4b5563; pointer-events: none;">¡DALE CLIC ACÁ ADENTRO SIN PARAR! 🔥</h3>
+        </div>
+      }
+
+      @if (juegoTerminado) {
+        <div style="padding: 30px 0;">
+          <span style="font-size: 3.5rem; display: block; margin-bottom: 10px;">🚀</span>
+          <h3>¡Prueba Finalizada!</h3>
+          <p style="font-size: 1.4rem; margin-bottom: 5px;">Hiciste un total de <strong>{{ contadorCps }}</strong> clics.</p>
+          <p style="font-size: 1.8rem; color: #10b981; font-weight: 800;">Promedio: {{ resultadoCpsResultante | number:'1.1-2' }} CPS</p>
+          <button (click)="cambiarModo('CPS')" class="btn-secondary" style="margin-top: 20px;">Intentar de Nuevo 🔄</button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (modoSeleccionado === 'AIM') {
+    <div style="position: relative; margin-top: 15px;">
+      <h2 style="margin-bottom: 25px;">🎯 Entrenamiento de Aim</h2>
+
+      @if (!juegoIniciado && !juegoTerminado) {
+        <button (click)="iniciarAim()" class="btn-primary" style="padding: 15px 40px; font-size: 1.2rem; margin: 40px 0;">¡Iniciar Entrenamiento! 🚀</button>
+      }
+
+      @if (juegoIniciado && !juegoTerminado) {
+        <div style="display: flex; justify-content: space-around; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">
+          <span style="color: #4b5563;">Objetivos: {{ circulosPegados }} / {{ circulosObjetivo }}</span>
+          <span style="color: #4f46e5;">Tiempo: {{ tiempoTranscurridoAim | number:'1.1-2' }}s</span>
+        </div>
+        <div id="aim-box" style="height: 350px; background: #111827; border-radius: 12px; position: relative; overflow: hidden; cursor: crosshair;">
+          <div 
+            (mousedown)="registrarPegadaAim()" 
+            [style.left]="targetX" 
+            [style.top]="targetY" 
+            style="width: 32px; height: 32px; background: #ff4757; border: 4px solid #ffffff; border-radius: 50%; position: absolute; transform: translate(-50%, -50%); cursor: pointer; transition: all 0.05s ease; box-shadow: 0 0 12px #ff4757;">
+          </div>
+        </div>
+      }
+
+      @if (juegoTerminado) {
+        <div style="padding: 30px 0;">
+          <span style="font-size: 3.5rem; display: block; margin-bottom: 10px;">🏆</span>
+          <h3>¡Entrenamiento Completo!</h3>
+          <p style="font-size: 1.3rem; margin-bottom: 10px;">Derribaste los {{ circulosObjetivo }} blancos.</p>
+          <p style="font-size: 2rem; color: #10b981; font-weight: 800;">Tiempo Total: {{ tiempoFinalAim | number:'1.1-3' }}s</p>
+          <button (click)="cambiarModo('AIM')" class="btn-secondary" style="margin-top: 20px;">Recomenzar Desafío 🔄</button>
+        </div>
+      }
+    </div>
+  }
+</div>

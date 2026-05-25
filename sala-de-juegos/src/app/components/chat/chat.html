@@ -1,0 +1,46 @@
+<div class="chat-wrapper">
+  <button (click)="volverAlHome()" class="btn-back">← Volver</button>
+  
+  <h2>💬 Sala de Chat Global</h2>
+
+  <div id="chat-mensajes-container" class="chat-container">
+    @for (msg of listaMensajes; track msg.id) {
+      <div class="mensaje-block" [ngClass]="{'msg-propio': msg.usuario_id === usuarioActual()?.id, 'msg-ajeno': msg.usuario_id !== usuarioActual()?.id}">
+        <span class="user-tag">
+          {{ msg.usuario_id === usuarioActual()?.id ? 'Tú' : msg.email.split('@')[0] }}
+        </span>
+
+        <div class="burbuja">
+          {{ msg.mensaje }}
+        </div>
+
+        <span class="time-tag">
+          {{ msg.fecha | date:'HH:mm' }}
+        </span>
+      </div>
+    } @empty {
+      <div class="chat-vacio">
+        <span class="emoji-vacio">🤫</span>
+        <p>No hay mensajes todavía. ¡Sé el primero en escribir!</p>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-area">
+    <input 
+      type="text" 
+      [(ngModel)]="nuevoMensaje" 
+      name="mensajeInput"
+      placeholder="Escribe un mensaje para la sala..." 
+      class="input-mensaje"
+      autocomplete="off"
+      (keyup.enter)="enviarMensaje()">
+
+    <button 
+      type="button" 
+      class="btn-enviar" 
+      (click)="enviarMensaje()">
+      Enviar 🚀
+    </button>
+  </div>
+</div>
