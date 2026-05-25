@@ -19,9 +19,9 @@
 | Sprint | Fecha de Rendición | Contenido Evaluado | Rama (Branch) | Estado |
 | :---: | :---: | :--- | :---: | :---: |
 | **Sprint #1** | Mar 19/05/2026 | Estructura Base + API GitHub | `rama-sprint-1` | ✅ Realizado |
-| **Sprint #2** | Mié 20/05/2026 | Auth + Guards + Home Condicional | `rama-sprint-2` | 🔲 Pendiente |
-| **Sprint #3** | Mar 26/05/2026 | Ahorcado + Mayor/Menor + Chat Realtime | `rama-sprint-3` | 🔲 Pendiente |
-| **Sprint #4** | Mar 26/05/2026 | Preguntados + Juego Propio + Tablas | `rama-sprint-4` | 🔲 Pendiente |
+| **Sprint #2** | Mié 20/05/2026 | Auth + Guards + Home Condicional | `rama-sprint-2` | ✅ Realizado |
+| **Sprint #3** | Mar 26/05/2026 | Ahorcado + Mayor/Menor + Chat Realtime | `rama-sprint-3` | ✅ Realizado |
+| **Sprint #4** | Mar 26/05/2026 | Preguntados + Juego Propio + Tablas | `rama-sprint-4` | ✅ Realizado |
 | **Sprint #5** | Mar 02/06/2026 | Recuperatorio (Encuesta + Admin) | `rama-sprint-5` | 🔲 Pendiente |
 
 ---
@@ -39,24 +39,24 @@
 ### 🔐 Sprint #2 — Autenticación y Control (`rama-sprint-2` → PR)
 | # | Funcionalidad | Descripción | Estado |
 | :---: | :--- | :--- | :---: |
-| 2.1 | **Auth System** | Login y Registro con Email/Contraseña usando Firebase/Supabase (Contraseña no se guarda). | 🔲 Pendiente |
-| 2.2 | **Home Condicional** | Muestra botones de Auth si está deslogueo, o Nombre + Logout si está logueado. | 🔲 Pendiente |
-| 2.3 | **Acceso Rápido** | 3 botones de login veloz con usuarios de prueba pre-registrados. | 🔲 Pendiente |
-| 2.4 | **Guards de Ruta** | Protección estricta de rutas privadas post-login. | 🔲 Pendiente |
+| 2.1 | **Auth System** | Login y Registro con Email/Contraseña usando Firebase/Supabase (Contraseña no se guarda). | ✅ Realizado |
+| 2.2 | **Home Condicional** | Muestra botones de Auth si está deslogueo, o Nombre + Logout si está logueado. | ✅ Realizado |
+| 2.3 | **Acceso Rápido** | 3 botones de login veloz con usuarios de prueba pre-registrados. | ✅ Realizado |
+| 2.4 | **Guards de Ruta** | Protección estricta de rutas privadas post-login. | ✅ Realizado |
 
 ### 🎮 Sprint #3 — Juegos I y Comunicación (`rama-sprint-3` → PR)
 | # | Funcionalidad | Descripción | Estado |
 | :---: | :--- | :--- | :---: |
-| 3.1 | **Juego: Ahorcado** | Entrada de datos exclusiva por botones en pantalla. Guarda estadísticas en DB. | 🔲 Pendiente |
-| 3.2 | **Juego: Mayor/Menor** | Lógica basada en baraja española. Almacena cartas acertadas en DB. | 🔲 Pendiente |
-| 3.3 | **Chat Global Realtime** | Mensajes en tiempo real (Supabase). Muestra user, contenido, hora y destaca el propio. | 🔲 Pendiente |
+| 3.1 | **Juego: Ahorcado** | Entrada de datos exclusiva por botones en pantalla. Guarda estadísticas en DB. | ✅ Realizado |
+| 3.2 | **Juego: Mayor/Menor** | Lógica basada en baraja española. Almacena cartas acertadas en DB. | ✅ Realizado |
+| 3.3 | **Chat Global Realtime** | Mensajes en tiempo real (Supabase). Muestra user, contenido, hora y destaca el propio. | ✅ Realizado |
 
 ### 📊 Sprint #4 — Juegos II y Rankings (`rama-sprint-4` → PR)
 | # | Funcionalidad | Descripción | Estado |
 | :---: | :--- | :--- | :---: |
-| 4.1 | **Juego: Preguntados** | Consumo de API externa de preguntas/respuestas con opciones en botones. Guarda en DB. | 🔲 Pendiente |
-| 4.2 | **Juego Propio** | Desarrollo de mecánica original (Mecánica descrita en "Quién Soy"). Guarda puntaje en DB. | 🔲 Pendiente |
-| 4.3 | **Listado Resultados** | 4 tablas de posiciones independientes ordenadas de mejor a peor desempeño. | 🔲 Pendiente |
+| 4.1 | **Juego: Preguntados** | Consumo de API externa de preguntas/respuestas con opciones en botones. Guarda en DB. | ✅ Realizado |
+| 4.2 | **Juego Propio** | Desarrollo de mecánica original (Mecánica descrita en "Quién Soy"). Guarda puntaje en DB. | ✅ Realizado |
+| 4.3 | **Listado Resultados** | 4 tablas de posiciones independientes ordenadas de mejor a peor desempeño. | ✅ Realizado |
 
 ### 🛠️ Sprint #5 — Recuperatorio Opcional/Obligatorio (`rama-sprint-5` → PR)
 | # | Funcionalidad | Descripción | Estado |
