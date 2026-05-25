@@ -1,0 +1,140 @@
+.ahorcado-container {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.ahorcado-container h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-around;
+  background: #f8fafc;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 35px;
+  border: 1px solid #f1f5f9;
+}
+
+.status-bar p {
+  margin: 0;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.palabra-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.letra-guion {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 4px solid #cbd5e1;
+  min-width: 35px;
+  text-align: center;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.teclado-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  gap: 10px;
+  max-width: 550px;
+  margin: 30px auto 0;
+}
+
+.btn-letra {
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.btn-letra:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.btn-letra:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-letra:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.resultado-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 25px 0;
+  animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.resultado-box h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.btn-reiniciar {
+  background: #4f46e5;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.2s;
+}
+
+.btn-reiniciar:hover {
+  background: #4338ca;
+}
+
+.btn-back {
+  transition: opacity 0.2s;
+}
+
+.btn-back:hover {
+  opacity: 0.8;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

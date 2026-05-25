@@ -40,7 +40,7 @@
   margin-bottom: 20px;
   text-align: left;
   display: flex;
-  flex-direction: column; /* Hace que el input baje y no se monte con la etiqueta */
+  flex-direction: column; 
 }
 
 .form-group label {
@@ -61,7 +61,7 @@
   font-size: 0.95rem;
   color: #1f2937;
   transition: all 0.2s ease;
-  box-sizing: border-box; /* Clave para que no se desborde el ancho */
+  box-sizing: border-box; 
 }
 
 .form-group input:focus {

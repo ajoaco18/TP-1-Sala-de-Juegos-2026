@@ -6,8 +6,19 @@
     
     <div class="nav-links">
       <a routerLink="/home" routerLinkActive="active" class="nav-item">
-        <span style="margin-right: 4px;"></span>Home
+        Home
       </a>
+      
+      @if (usuarioLogueado()) {
+        <a routerLink="/resultados" routerLinkActive="active" class="nav-item">
+          <span style="margin-right: 4px;"></span>Resultados
+        </a>
+
+        <a routerLink="/chat" routerLinkActive="active" class="nav-item">
+          <span style="margin-right: 4px;"></span>Chat Global
+        </a>
+      }
+
       <a routerLink="/quien-soy" routerLinkActive="active" class="nav-item">
         <span style="margin-right: 4px;">🙋🏿</span>Quien Soy
       </a>

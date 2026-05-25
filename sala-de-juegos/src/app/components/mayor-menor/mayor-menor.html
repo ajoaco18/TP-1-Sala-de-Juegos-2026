@@ -1,0 +1,36 @@
+<div class="juego-container">
+  <button (click)="volverAlHome()" class="btn-back" style="position: absolute; left: 20px; top: 20px; background: none; border: none; color: #4f46e5; font-weight: bold; cursor: pointer; font-size: 1rem;">← Volver</button>
+  
+  <h2>🃏 Mayor o Menor</h2>
+
+  <div class="marcador">
+    <p>Aciertos: <strong style="color: #10b981;">{{ aciertos }}</strong></p>
+    <p>Vidas: <strong style="color: #ef4444;">{{ '❤️'.repeat(vidas) || '💀' }}</strong></p>
+  </div>
+
+  <div class="carta-box">
+    <span class="carta-numero">{{ cartaActual.numero }}</span>
+    <span class="carta-palo">de {{ cartaActual.palo }}</span>
+  </div>
+
+  @if (mensajeResultado && !juegoTerminado) {
+    <p class="feedback">{{ mensajeResultado }}</p>
+  } @else {
+    <div class="feedback-vacio"></div>
+  }
+
+  @if (!juegoTerminado) {
+    <div class="acciones">
+      <button class="btn-juego btn-menor" (click)="jugar('menor')" [disabled]="cargandoCarta">🔽 MENOR</button>
+      <button class="btn-juego btn-mayor" (click)="jugar('mayor')" [disabled]="cargandoCarta">🔼 MAYOR</button>
+    </div>
+  }
+
+  @if (juegoTerminado) {
+    <div class="game-over-box">
+      <h3>¡JUEGO TERMINADO!</h3>
+      <p>Lograste adivinar <strong>{{ aciertos }}</strong> cartas seguidas.</p>
+      <button class="btn-reiniciar" (click)="iniciarJuego()">Volver a intentar 🔄</button>
+    </div>
+  }
+</div>

@@ -16,27 +16,73 @@
       <button class="btn-logout" (click)="onLogout()">Cerrar Sesion</button>
     </div>
 
-    <main class="games-grid" style="display: flex; gap: 20px; max-width: 900px; margin: 0 auto;">
+    <div class="carousel-container">
+      <h2 class="carousel-title">LABORATORIO COGNITIVO</h2>
       
-      <div class="game-card" routerLink="/juegos" style="flex: 1; cursor: pointer;">
-        <div class="game-icon" style="font-size: 2.5rem; margin-bottom: 10px;">⚡</div>
-        <h3>Minijuegos de Reflejos</h3>
-        <p>Entrena tus capacidades cognitivas. Incluye CPS Tester (velocidad de click) y Aim Trainer (precisión visual).</p>
-        <span class="game-link">Ingresar al Laboratorio →</span>
-      </div>
+      <main class="games-carousel">
+        
+        <div class="game-card" routerLink="/juegos">
+          <div class="game-icon">⚡</div>
+          <h3>Minijuegos de Reflejos</h3>
+          <p>Entrena tus capacidades cognitivas. Incluye CPS Tester y Aim Trainer.</p>
+          <span class="game-link">Jugar Ahora →</span>
+        </div>
 
-      <div class="game-card" routerLink="/quien-soy" style="flex: 1; cursor: pointer;">
-        <div class="game-icon" style="font-size: 2.5rem; margin-bottom: 10px;">👤</div>
-        <h3>Sobre el Alumno</h3>
-        <p>Datos personales, informacion de contacto y redes del desarrollador de la plataforma.</p>
-        <span class="game-link">Ver Perfil →</span>
-      </div>
+        <div class="game-card" routerLink="/ahorcado">
+          <div class="game-icon">🎮</div>
+          <h3>El Ahorcado</h3>
+          <p>Adivina la palabra oculta seleccionando las letras en pantalla antes de quedarte sin intentos.</p>
+          <span class="game-link">Jugar Ahora →</span>
+        </div>
 
-    </main>
+        <div class="game-card" routerLink="/mayor-menor">
+          <div class="game-icon">🎮</div>
+          <h3>Mayor o Menor</h3>
+          <p>¿Podrás adivinar si la siguiente carta de la baraja es más alta o más baja? ¡Cuidado con las vidas!</p>
+          <span class="game-link">Jugar Ahora →</span>
+        </div>
+
+        <div class="game-card" routerLink="/preguntados" style="cursor: pointer;">
+          <div class="game-icon">🎮</div>
+          <h3>Trivia Preguntados</h3>
+          <p>Poné a prueba tu cultura general respondiendo preguntas de opción múltiple consumidas directo desde una API internacional.</p>
+          <span class="game-link">Jugar Ahora →</span>
+        </div>
+
+        <div class="game-card" routerLink="/chat">
+          <div class="game-icon">💬</div>
+          <h3>Sala de Chat Global</h3>
+          <p>Conéctate en tiempo real con otros estudiantes de la sala para debatir estrategias y puntuaciones.</p>
+          <span class="game-link">Entrar a la Sala →</span>
+        </div>
+
+        <div class="game-card" routerLink="/resultados" style="cursor: pointer;">
+          <div class="game-icon">🏆</div>
+          <h3>Resultados Globales</h3>
+          <p>Mira las tablas de clasificacion y el historial con los mejores puntajes de todos los jugadores de la plataforma.</p>
+          <span class="game-link">Ver Rankings →</span>
+        </div>
+
+      </main>
+    </div>
+
+    <section class="alumno-section-fija">
+      <hr class="alumno-divider">
+      
+      <div class="alumno-card-destacada" routerLink="/quien-soy">
+        <div class="game-icon" style="margin-bottom: 0;">👤</div>
+        <div style="flex: 1;">
+          <span class="alumno-meta-title">Desarrollador de la Plataforma</span>
+          <h3>Sobre el Alumno</h3>
+          <p>Datos personales, informacion de contacto y rendimiento extraído de la API de GitHub.</p>
+        </div>
+        <span class="game-link" style="font-size: 1.3rem;">→</span>
+      </div>
+    </section>
 
   } @else {
     <div class="guest-card">
-      <div class="guest-icon" style="font-size: 3.5rem; margin-bottom: 15px;">🎮</div>
+      <div class="guest-icon">🎮</div>
       <h2>Acceso Restringido</h2>
       <p>Debes iniciar sesion o registrarte en la plataforma para poder medir tus capacidades y guardar tus estadisticas de juego.</p>
       

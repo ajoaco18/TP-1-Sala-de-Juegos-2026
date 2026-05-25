@@ -1,0 +1,33 @@
+@keyframes targetSpawn {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+#aim-box {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 2px solid #374151;
+}
+
+#aim-box div {
+  animation: targetSpawn 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  user-select: none;
+}
+
+.reflejos-wrapper div[mousedown]:active {
+  background: #d1d5db !important;
+  transform: scale(0.99);
+}
+
+.reflejos-wrapper button {
+  transition: all 0.2s ease;
+}
+
+.reflejos-wrapper button:active {
+  transform: scale(0.96);
+}
